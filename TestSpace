@@ -1,0 +1,8 @@
+import PNLogic
+
+# n^2 slow - works ok for 250. doesn't for 500
+P_List = PNLogic.init(100)
+
+PNLogic.show_stat_block(P_List, (52, 15))
+print("\n")
+PNLogic.show_optimal_play(P_List, (52, 15))

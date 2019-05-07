@@ -1,0 +1,35 @@
+P denotes Previous Player is the winner.
+N denotes Next Player is the winner.
+(0,0) and similarly (n,n) are P-states.
+Goal is to determine all states P up to some upper bound as well as the chain of optimal play.
+
+(n,n) are P by inspection - short-circuit
+To avoid subtract 0 cases label (n,0) cases as N-states
+
+Check if max subtraction or next-to-max subtraction (if possible) is the winning move
+Any other play is misere. ex (7,2) -> (5,2) is misere.
+
+Feature Idea List
+* Use symmetry of coordinates to fold needed generated list in half along x=y axis
+** Make logic not depend on coordinate order, but keep cosmetic display order
+* Use gcf - multiply gcf only on step display (might be more difficult to make rel prime p list)
+* Dictionary between states and moves. (so show_optimal_play uses a lookup rather than calculation)
+* Rewrite code to not use init(n) and induction over approx. n^2 coordinates.
+
+Psuedocode
+
+determine which number in the pair is greater
+determine how many times the smaller can go in the greater, div_ratio (needed to determine if full_move is the mandatory move)
+check if move greater%smaller, smaller (the full move) is the best move
+otherwise check if the alternative move greater%smaller + smaller, smaller (the alt move) is the best move, if possible
+
+if div_ratio = 1 and full_move is P = True, N Position
+if div_ratio = 1 and full_move is P = False, P Position
+
+if div_ratio > 1 and full_move is P and alt_move is N, then at a n-state and winning move is full_move
+if div_ratio > 1 and full_move is N and alt_move is P, then at a n-state and winning move is alt_move
+therefore, if div_ratio > 1 can quickly say it's a n position even if you don't know the winning move. (for generating a simple list of p-positions)
+
+it shouldn't be the case that both full move and alt moves are both P or both N. (they should have opposite parity)
+ie. moving state s to N-state implies s is an P-state and vice-versa (in optimal play)
+if a player moves from N to N, this is clearly misere play.

@@ -1,0 +1,30 @@
+The game starts with two positive integers, x and y, in two piles.
+Each player can subtract a multiple of the smallest number from the biggest number, as long as the result is greater than or equal to 0. The exception is that if either pile is 0, and not both, then the next player can take all from the other pile.
+The player who takes all from the last pile, wins.
+
+Claim: This game is a NIM game for one player if that player can choose to go first or second, and plays optimally.
+Question: Is there a way to play optimally other than to "brute force" know which positions lead to a win?
+
+ex.
+Game starts with (52,15). Anne and Bob are players. Anne chooses to go first
+Anne: (22,15), taking 2*15 from 52
+Bob: (7,15), taking 15 from 22
+Anne: (7,8), taking 7 from 15
+Bob: (7,1), taking 7 from 8
+Anne: (1,1), taking 6*1 from 7
+Bob: (1,0), taking 1 from 1
+Anne: (0,0), taking the last pile. Anne wins.
+
+* P-positions (Previous Player wins positions) and N-positions (Next Player wins positions) can be calculated by brute force inductive reasoning. Choose to go first if the game starts with an N-position, and give your opponent a P-position at every step. Otherwise, go second, as your opponent at a P-position is forced to give you an N-position. Proceed normally.
+* Every P-position has only one move, a forced move, unless it’s (0,0)
+* Label (0,0) as a P-position. (The previous player won)
+* Observe (n,0) positions are N-positions.
+* Observe (n,n) positions are P-positions.
+* Observe (n,n+1) positions are P-positions, when n > 1. as (n,n+1) -> (n,1) -> (1,1)
+* It can be useful to consider only pairs of numbers which have gcf = 1. My unproven claim is that multiples of a P-states are P-states, and multiples of N-states are N-states.
+ex. The decision of going second given P-state (4,5) (see chain: (4,5) -> (4,1) -> (1,1) -> (0,1) -> (0,0) ) is the same decision for P-state (8,10) (see chain: (8,10) -> (8,2) -> (2,2) -> (0,2) -> (0,0) )
+* Observe that for (x,y), x > y and the remainder for x/y is R, the only two moves that should be considered (if possible) are (R, y) and (R+y, y). Any other move is a losing move.
+** Example: Given (7,2) it is a losing move for Alice to say (5,2), as this simply passes the option to say either (3,2) or (1,2) to Bob, and if Bob knows (3,2) is a P-position, he says (3,2) and subsequently wins.
+** Anne can apply this reasoning like in the game above. For example, she can consider that given (52, 15) if she should say (22,15) or (7,15), as she already knows playing (37,15) is a losing move. She then realizes (7,15) is an N-position as Bob can then say (7,8), so Alice knows by inductive reasoning (22,15) is a P-position, as this forces Bob to say (7,15) instead.
+* If Anne knows her Fibonacci sequences, she can immediately deal with chains that contain only mandatory moves.
+** For example, for the sequence starting with 1,1, ... Anne can conclude (1,1) is a P position (1,2) is an N position, (2,3) is a P position, and so on alternating. ie. For two consecutive Fibonacci numbers, if f_i, f_{i+1} and i is odd, it is a P position, otherwise it is an N position
