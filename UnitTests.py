@@ -10,7 +10,15 @@ P_Quick_List = PNLogic.quick_init(100)
 
 class TestCheatListisSufficient(unittest.TestCase):
     def test_list_equal_100(self):
-        self.assertEqual(PNLogic.repr_list(P_List), PNLogic.repr_list(P_Quick_List))
+        p_list_repr = io.StringIO()
+        with redirect_stdout(p_list_repr):
+            PNLogic.repr_list(P_List)
+        p_list_out = p_list_repr.getvalue()
+        p_quick_list_repr = io.StringIO()
+        with redirect_stdout(p_quick_list_repr):
+            PNLogic.repr_list(P_Quick_List)
+        p_quick_list_out = p_quick_list_repr.getvalue()
+        self.assertEqual(p_list_out, p_quick_list_out)
 
 
 class TestIsP(unittest.TestCase):
