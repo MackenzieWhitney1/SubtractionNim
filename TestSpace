@@ -4,5 +4,5 @@ P_List = PNLogic.quick_init(1000)
 
 PNLogic.show_stat_block(P_List, (52, 15))
 print("\n")
-PNLogic.show_optimal_play(P_List, (532, 115))
+PNLogic.show_optimal_play(P_List, (52, 15))
 
