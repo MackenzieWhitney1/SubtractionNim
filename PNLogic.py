@@ -3,9 +3,12 @@ def repr_list(co_list):
     ending_x = co_list[-1][0]
     for x_pos in range(starting_x, ending_x+1):
         print("")
+        # i = 0
         for item in co_list:
             if item[0] == x_pos:
                 print(item, end=' ')
+                # i += 1
+        # print(f"Count: {i}")
 
 
 def show_optimal_play(p_list, co):
@@ -120,9 +123,30 @@ def generate_p(co, p_list):
 def init(upper_bound):
     p_list = []
     for x in range(upper_bound+1):
-        for y in range(min(2*x, upper_bound+1)):
+        for y in range(2*x+1):
             if generate_p((x, y), p_list) is True:
                 p_list.append((x, y))
     return p_list
+
+
+# cheating in the sense justification is lacking to know that each xth row contains exactly x elements
+def quick_init(upper_bound):
+    p_list = [(0, 0)]
+    previous_min = 0  # for each row, the new min is either equal to previous_min or is previous_min + 1
+    for x in range(upper_bound+1):
+        min_found = False
+        while min_found is False:
+            if generate_p((x, previous_min), p_list) is True:
+                min_found = True
+            elif generate_p((x, previous_min + 1), p_list) is True:
+                previous_min += 1
+                min_found = True
+            else:
+                break
+        for y in range(previous_min, previous_min+x+1):
+            p_list.append((x, y))
+    return p_list
+
+
 
 

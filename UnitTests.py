@@ -5,6 +5,12 @@ from contextlib import redirect_stdout
 
 
 P_List = PNLogic.init(100)
+P_Quick_List = PNLogic.quick_init(100)
+
+
+class TestCheatListisSufficient(unittest.TestCase):
+    def test_list_equal_100(self):
+        self.assertEqual(PNLogic.repr_list(P_List), PNLogic.repr_list(P_Quick_List))
 
 
 class TestIsP(unittest.TestCase):
