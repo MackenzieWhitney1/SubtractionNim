@@ -14,7 +14,9 @@ Feature Idea List
 ** Make logic not depend on coordinate order, but keep cosmetic display order
 * Use gcf - multiply gcf only on step display (might be more difficult to make rel prime p list)
 * Dictionary between states and moves. (so show_optimal_play uses a lookup rather than calculation)
-* Rewrite code to not use init(n) and induction over approx. n^2 coordinates.
+* Replace quick init by finding a closed form formula to determine the following
+** Given x, find the minimum value for y for which (x, y) is a P position, as one can then conclude (currently w/o justification)
+the range (x, minimum) to (x, minimum+x) are P positions for a given x.
 
 Psuedocode
 
