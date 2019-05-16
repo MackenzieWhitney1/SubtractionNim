@@ -16,7 +16,7 @@ Feature Idea List
 * Dictionary between states and moves. (so show_optimal_play uses a lookup rather than calculation)
 * Replace quick init by finding a closed form formula to determine the following
 ** Given x, find the minimum value for y for which (x, y) is a P position, as one can then conclude (currently w/o justification)
-the range (x, minimum) to (x, minimum+x) are P positions for a given x.
+the range (x, minimum) to (x, minimum+x) are the only P positions for a given x.
 
 Psuedocode
 
