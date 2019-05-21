@@ -131,7 +131,7 @@ def init(upper_bound):
 
 # cheating in the sense justification is lacking to know each xth row contains exactly x consecutive elements
 def quick_init(upper_bound):
-    p_list = []
+    p_list = [(0, 0)]
     previous_min = 0  # for each row, the new min is either equal to previous_min or is previous_min + 1
     for x in range(upper_bound+1):
         min_found = False
