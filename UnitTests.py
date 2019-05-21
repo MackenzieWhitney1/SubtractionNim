@@ -7,8 +7,8 @@ from contextlib import redirect_stdout
 P_List = PNLogic.init(100)
 P_Quick_List = PNLogic.quick_init(100)
 
-
-class TestCheatListisSufficient(unittest.TestCase):
+# bugged. doesn't actually compare correctly
+class TestQuickListIsSufficient(unittest.TestCase):
     def test_list_equal_100(self):
         p_list_repr = io.StringIO()
         with redirect_stdout(p_list_repr):
