@@ -17,6 +17,15 @@ Feature Idea List
 * Replace quick init by finding a closed form formula to determine the following
 ** Given x, find the minimum value for y for which (x, y) is a P position, as one can then conclude (currently w/o justification)
 the range (x, minimum) to (x, minimum+x) are the only P positions for a given x.
+** Alternatively find the "midpoint" value of y and then determine the epsilon / distance from midpoint value is to endpoints.
+*** This looked promising, but it doesn't appear that midpoint is linear with increasing x like epsilon is. This might be a 
+mere restatement of the main issue
+*** ex. 
+1 1 midpoint = 1 e = 0
+2 2 2 3 midpoint = 2.5 e = 0.5
+3 2 3 3 3 4 midpoint = 3 e = 1
+4 3 4 4 4 5 4 6 mid = 4.5 e = 1.5
+5 4 5 5 5 6 5 7 5 8 mid = 6 e = 2
 
 Psuedocode
 
