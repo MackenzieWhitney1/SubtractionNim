@@ -11,6 +11,43 @@ def repr_list(co_list):
         # print(f"Count: {i}")
 
 
+def show_min_for_each_x(co_list):
+    starting_x = co_list[0][0]
+    ending_x = co_list[-1][0]
+
+    for x_pos in range(starting_x, ending_x+1):
+        x_min = get_min_for_specific_x(co_list, x_pos)
+        print(f"x: {x_pos}", f"min: {x_min}")
+
+
+# describe increasing min with increasing x in terms of binary string.
+def show_min_increase_binary_string(co_list):
+    starting_x = co_list[0][0]
+    ending_x = co_list[-1][0]
+
+    prev_min = 0
+    for x_pos in range(starting_x, ending_x+1):
+        x_min = get_min_for_specific_x(co_list, x_pos)
+        if x_pos > 0:
+            print((x_min - prev_min), end="")
+            if x_pos % 16 == 0:  # attempt to break bit-wise; 16 and 144 were close to showing a repeating pattern.
+                print("")
+            prev_min = x_min
+
+
+def get_min_for_specific_x(co_list, x):
+    temp_list = []
+    for item in co_list:
+        if item[0] == x:
+            temp_list.append(item)
+    x_min = temp_list[0][1]
+    """ not useful - finding closed form for mean equivalent to finding closed form for min
+    max = temp_list[-1][1]
+    mean = (min + max) / 2
+    epsilon = max - mean"""
+    return x_min
+
+
 def show_optimal_play(p_list, co):
     states = ['N', 'P']
     x, y = list(co)
@@ -79,7 +116,7 @@ def show_stat_block(p_list, co):
     print(f"coordinate is {co}")
     print(f"full move is {full_move}")
     if div_ratio > 1:
-       print(f"alt move is {alt_move}")
+            print(f"alt move is {alt_move}")
     if div_ratio == 1 or div_ratio == 0:
         if full_move in p_list:
             print("the full move, which is mandatory, is a P-position")
@@ -106,7 +143,7 @@ def generate_p(co, p_list):
             greater = x
             lesser = y
         div_ratio = greater // lesser
-        full_move = (greater % lesser, lesser) # note forced order. building p_list x < y
+        full_move = (greater % lesser, lesser)  # note forced order. building p_list x < y
 
         if div_ratio == 1:
             if full_move in p_list:
@@ -146,7 +183,3 @@ def quick_init(upper_bound):
         for y in range(previous_min, previous_min+x):
             p_list.append((x, y))
     return p_list
-
-
-
-
