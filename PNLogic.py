@@ -157,6 +157,7 @@ def generate_p(co, p_list):
 
 # necessary? especially if there is a way to know states P not by induction.
 # N_List not required. N is ~P
+# keeping because it describes how the list was generated initially
 def init(upper_bound):
     p_list = []
     for x in range(upper_bound+1):
@@ -166,7 +167,7 @@ def init(upper_bound):
     return p_list
 
 
-# cheating in the sense justification is lacking to know each xth row contains exactly x consecutive elements
+# justification is lacking to know each xth row contains exactly x consecutive elements and min = prev min or prev min + 1
 def quick_init(upper_bound):
     p_list = [(0, 0)]
     previous_min = 0  # for each row, the new min is either equal to previous_min or is previous_min + 1
