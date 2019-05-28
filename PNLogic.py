@@ -167,10 +167,9 @@ def init(upper_bound):
     return p_list
 
 
-# justification is lacking to know each xth row contains exactly x consecutive elements and min = prev min or prev min + 1
 def quick_init(upper_bound):
     p_list = [(0, 0)]
-    previous_min = 0  # for each row, the new min is either equal to previous_min or is previous_min + 1
+    previous_min = 0  # for each row, the new min is either equal to previous_min or is previous_min + 1 unjustified
     for x in range(upper_bound+1):
         min_found = False
         while min_found is False:
@@ -181,6 +180,6 @@ def quick_init(upper_bound):
                 min_found = True
             else:
                 break
-        for y in range(previous_min, previous_min+x):
+        for y in range(previous_min, previous_min+x):  #xth row contains exactly x consecutive elements. unjustified
             p_list.append((x, y))
     return p_list
