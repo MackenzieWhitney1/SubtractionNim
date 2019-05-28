@@ -11,5 +11,7 @@ show_optimal_play shows the entire chain of moves when the game is played optima
 Here is an example of untracked file "TestSpace.py"
 
 import PNLogic
+
 P_List = PNLogic.init(100)
+
 PNLogic.show_optimal_play(P_List, (52, 15))
