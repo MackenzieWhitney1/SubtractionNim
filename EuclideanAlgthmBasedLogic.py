@@ -39,7 +39,7 @@ def show_optimal_play_binary_string(binary_string):
             play2 = "0"+current_string[1:]
             # print(f"play1 is {play1}")
             # print(f"play2 is {play2}")
-            if count_leading_zeroes(play1) // 1 == 0:
+            if count_leading_zeroes(play1) // 2 == 0:
                 current_string = play2
             else:
                 current_string = play1
