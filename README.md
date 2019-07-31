@@ -1,6 +1,6 @@
 # SubtractionNim
 Read "theory" for general problem statement and example.
-This is meant to be a utility to solve the nim game by printing optimal play.
+This is meant to be a utility to solve the impartial game by printing optimal play.
 
 EDIT:// recently added Euclidean Logic file, which gets right to the solution without generating a complete list of P-positions.
 Bottom of the file has an example. The binary string representations just need to be changed back to the original representation for clarity. Binary string "0" refers to when the coordinate is (x,x) where x = gcf(a,b) where a and b were the original chosen numbers.
