@@ -2,7 +2,7 @@ The game starts with two positive integers, x and y, in two piles.
 Each player can subtract a multiple of the smallest number from the biggest number, as long as the result is greater than or equal to 0. The exception is that if either pile is 0, and not both, then the next player can take all from the other pile.
 The player who takes all from the last pile, wins.
 
-Claim: This game is a NIM game for one player if that player can choose to go first or second, and plays optimally.
+Claim: This game is an impartial game for one player if that player can choose to go first or second, and plays optimally.
 Question: Is there a way to play optimally other than to "brute force" know which positions lead to a win?
 
 ex.
